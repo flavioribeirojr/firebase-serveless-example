@@ -1,10 +1,19 @@
 import { Request, Response, Application } from 'express';
 import { db } from 'src/config/firebase';
+import { z } from 'zod';
+import { validateBody } from './utils/body-validation';
 
 export function registerRecordsRoutes(app: Application) {
+  const addRecordBodySchema = z.object({
+    name: z.string().min(1),
+  });
+
   app
     .route('/records')
-    .post(addRecord);
+    .post(
+      validateBody(addRecordBodySchema),
+      addRecord
+    );
 
   async function addRecord(req: AddRecordRequest, res: Response) {
     try {

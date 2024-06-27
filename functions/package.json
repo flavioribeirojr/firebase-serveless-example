@@ -10,7 +10,8 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "test": "mocha --require ts-node/register -r tsconfig-paths/register"
+    "test": "mocha --require ts-node/register -r tsconfig-paths/register",
+    "test:watch": "mocha -w --require ts-node/register -r tsconfig-paths/register"
   },
   "engines": {
     "node": "18"
@@ -19,7 +20,8 @@
   "dependencies": {
     "express": "^4.19.2",
     "firebase-admin": "^12.1.0",
-    "firebase-functions": "^5.0.0"
+    "firebase-functions": "^5.0.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.7",

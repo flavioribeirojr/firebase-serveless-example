@@ -39,4 +39,22 @@ describe('RecordsRoutes', () => {
 
     assert(created.data().name === 'some_name');
   });
+
+  it('must return 422 http status code when name property is missing', async () => {
+    const response = await request(app)
+      .post('/records')
+      .set({ 'content-type': 'application/json' })
+      .send({});
+
+    assert(response.statusCode === 422);
+  });
+
+  it('must return 422 http status code when name property is empty', async () => {
+    const response = await request(app)
+      .post('/records')
+      .set({ 'content-type': 'application/json' })
+      .send({ name: '' });
+
+    assert(response.statusCode === 422);
+  });
 });

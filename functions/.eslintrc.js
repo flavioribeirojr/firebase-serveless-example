@@ -34,5 +34,6 @@ module.exports = {
     'require-jsdoc': [ 'off' ],
     'arrow-parens': [ 'off' ],
     'no-invalid-this': [ 'off' ],
+    'max-len': [ 'error', 120 ],
   },
 };
